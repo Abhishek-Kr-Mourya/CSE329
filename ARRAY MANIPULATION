@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    
+    for (int i = 0; i < n; i += 2) {
+        for (int j = i + 2; j < n; j += 2) {
+            if (v[i] > v[j]) {
+                swap(v[i], v[j]);
+            }
+        }
+    }
+    
+    for (int i = 1; i < n; i += 2) {
+        for (int j = i + 2; j < n; j += 2) {
+            if (v[i] < v[j]) {
+                swap(v[i], v[j]);
+            }
+        }
+    }
+    
+    vector<int> result(n);
+    for (int i = 0, j = 0, k = n - 1; i < n; i++) {
+        if (i % 2 == 0) {
+            result[i] = v[j++];
+        } else {
+            result[i] = v[k--];
+        }
+    }
+    
+    for (int i = 0; i < n; i++) {
+        cout << result[i] << " ";
+    }
+    cout << endl;
+    
+    
+    
+    
+}
