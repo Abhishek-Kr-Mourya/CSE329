@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int primeFactors(int n)
+{
+    vector<int> v1;
+    for(int i=1;i<=n;i++){
+        if(n%i==0){
+            int c=0;
+            for(int j=2;j<=i/2;j++){
+                if(i%j==0){
+                    c++;
+                }
+            }
+            if(c==0){
+                v1.push_back(i);
+            }
+        }
+    }
+    sort(v1.begin(),v1.end());
+
+    return v1[v1.size()-1];
+
+}
+
+int main(){
+    int p;
+    cout<<"enter p:"<<endl;
+    cin>>p;
+    int a,b;
+    cout<<"enter the range"<<endl;
+    cin>>a>>b;
+    for(int i=a;i<=b;i++){
+    if(primeFactors(i)<=p){
+        cout<<i<<endl;
+    }
+    }
+    return 0;
+}
