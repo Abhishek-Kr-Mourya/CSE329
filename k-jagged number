@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int primeFactors(int n)
+{
+    vector<int> v1;
+    for(int i=2;i<=n/2;i++){
+        if(n%i==0){
+            int c=0;
+            for(int j=2;j<=i/2;j++){
+                if(i%j==0){
+                    c++;
+                }
+            }
+            if(c==0){
+                v1.push_back(i);
+            }
+        }
+    }
+    int min=v1[0];
+    for(int i=0;i<v1.size();i++){
+        if(v1[i]<min){
+            min=v1[i];
+        }
+    }
+    return min;
+
+}
+
+int main(){
+
+    int n,k;
+    cout<<"enter the number and k : "<<endl;
+    cin>>n;
+    cin>>k;
+
+    int primenum=primeFactors(n);
+
+    if(primenum>=k){
+        cout<<k<<"jagged"<<n;
+    }
+    else{
+        cout<<"not jagged";
+    }
+
+    return 0;
+}
