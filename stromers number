@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int primeFactors(int n)
+{
+    vector<int> v1;
+    for(int i=2;i<=n/2;i++){
+        if(n%i==0){
+            int c=0;
+            for(int j=2;j<=i/2;j++){
+                if(i%j==0){
+                    c++;
+                }
+            }
+            if(c==0){
+                v1.push_back(i);
+            }
+        }
+    }
+    sort(v1.begin(),v1.end());
+
+    return v1[v1.size()-1];
+
+}
+
+int main(){
+
+    int i;
+    cin>>i;
+    int pi=(i*i)+1;
+    int str=primeFactors(pi);
+    cout<<str<<endl;
+    if(str>=(2*i)){
+        cout<<"strommer number";
+    }
+    else{
+        cout<<"not strommer";
+    }
+
+    return 0;
+}
